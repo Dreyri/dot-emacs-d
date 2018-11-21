@@ -72,7 +72,7 @@
 (use-package paredit
   :delight t
   :hook
-  ('(lis-mode
+  ('(lisp-mode
      common-lisp-mode
      emacs-lisp-mode
      scheme-mode)
