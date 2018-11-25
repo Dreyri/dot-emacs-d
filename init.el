@@ -72,12 +72,12 @@
 (use-package paredit
   :delight t
   :hook
-  ('(lisp-mode
-     common-lisp-mode
-     emacs-lisp-mode
-     scheme-mode)
-   . paredit-mode))
-
+  (lisp-mode . paredit-mode)
+  (common-lisp-mode . paredit-mode)
+  (emacs-lisp-mode . paredit-mode)
+  (scheme-mode . paredit-mode))
+  
+  
 (use-package evil
   :commands evil-mode)
 
@@ -130,7 +130,8 @@
 
 (use-package swiper
   :delight t
-  :after ivy)
+  :after ivy
+  :bind (("C-s" . swiper)))
 
 (use-package ace-window
   :bind ("<C-return>" . ace-window))
@@ -154,16 +155,24 @@
 (use-package company-lsp
   :after (company lsp-mode)
   :config
-  (push 'comany-lsp company-backends))
+  (push 'company-lsp company-backends))
 
 (use-package lsp-mode
   :defer t)
 
 (use-package ccls
+  :disabled t
   :commands lsp-ccls-enable
   :hook
   (c-mode-common . lsp-ccls-enable))
 
+(use-package cquery
+  :commands lsp-cquery-enable
+  :hook
+  (c-mode-common . lsp-cquery-enable))
+
+(use-package flycheck)
+  
 (use-package yasnippet
   :delight yas-minor-mode
   :bind
@@ -178,3 +187,17 @@
 
 (use-package nix-mode
   :mode "\\.nix\\'")
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (paredit nix-buffer flycheck nix-mode nix-update yaml-mode yasnippet ccls company-lsp company projectile ace-window ivy-rich counsel ivy gitignore-mode magit clang-format org-plus-contrib hydra evil which-key delight use-package))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
