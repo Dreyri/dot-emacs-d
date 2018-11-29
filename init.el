@@ -211,6 +211,18 @@
   (add-to-list 'projectile-globally-ignored-file-suffixes '(".o"
 							    ".so")))
 
+;; don't forget to run M-x all-the-icons-install-fonts
+;; I wanted to use this package to setup in combination with company-box but I'm not sure how so disabled for a while
+(use-package all-the-icons
+  :disabled t)
+
+(use-package all-the-icons-ivy
+  :disabled t
+  :after
+  (all-the-icons ivy)
+  :config
+  (all-the-icons-ivy-setup))
+
 (use-package company
   :delight t
   :defer 3
