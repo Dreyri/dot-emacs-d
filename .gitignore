@@ -5,3 +5,7 @@ nix-buffer/
 projectile-bookmarks.eld
 recentf
 recentf~
+url/
+session.*
+projectile.cache
+eshell/
