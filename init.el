@@ -257,6 +257,12 @@
   (yas-load-directory (concat user-emacs-directory "snippets"))
   (yas-global-mode t))
 
+(use-package gitignore-mode
+  :mode ("\.gitignore"))
+
+(use-package gitconfig-mode
+  :mode ("\.gitconfig"))
+
 (use-package yaml-mode
   :mode ("\\.ya?ml\\'" "\.clang-format"))
 
