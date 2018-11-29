@@ -8,6 +8,13 @@
   (interactive)
   (load-file (concat user-emacs-directory "init.el")))
 
+(defun nix-find-executable (pkg executable)
+  (interactive
+   "spkg: \nsexecutable: \n")
+  (string-trim
+   (shell-command-to-string
+    (concat "nix-shell -p " pkg " --run 'which " executable "'"))))
+
 (setq ring-bell-function 'ignore)
 
 (blink-cursor-mode nil)
@@ -101,9 +108,21 @@
 	 ("C-c o j" . org-clock-jump-to-current-clock)))
 
 (use-package clang-format
+  :init
+  (setq clang-format-executable nil)
+  (defun nix-find-clang-format-executable ()
+    (interactive)
+    (if (not clang-format-executable)
+	(nix-find-executable "clang_7" "clang-format")
+      clang-format-executable))
+  (defun nix-clang-format-buffer ()
+    (interactive)
+    (if (not clang-format-executable)
+	(setq clang-format-executable (nix-find-clang-format-executable)))
+    (clang-format-buffer))
   :bind
   (:map c-mode-base-map
-	("C-c C-f" . clang-format-buffer)))
+	("C-c C-f" . nix-clang-format-buffer)))
 
 (use-package magit
   :bind (("C-x g". magit-status)))
