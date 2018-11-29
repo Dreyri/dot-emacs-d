@@ -231,6 +231,11 @@
   :hook
   (after-init . global-company-mode))
 
+(use-package company-box
+  :disabled t
+  :hook
+  (company-mode . company-box-mode))
+
 (use-package company-lsp
   :after (company lsp-mode)
   :config
