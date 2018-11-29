@@ -87,7 +87,7 @@
   
 (use-package evil
   :commands evil-mode
-  :init
+  :config
   (evil-mode))
 
 (use-package general
