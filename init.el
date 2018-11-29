@@ -192,16 +192,61 @@
 (use-package lsp-mode
   :defer t)
 
+(use-package lsp-ui
+  :hook
+  (lsp-mode . lsp-ui-mode))
+
 (use-package ccls
   :disabled t
   :commands lsp-ccls-enable
   :hook
   (c-mode-common . lsp-ccls-enable))
 
-(use-package cquery
-  :commands lsp-cquery-enable
+(use-package lsp-clangd
+  :init
+  (setq lsp-clangd-executable nil)
+  (defun nix-find-clangd ()
+    (nix-find-executable "clang_7" "clangd"))
+  (defun nix-set-clangd ()
+    (if (not lsp-clangd-executable)
+	(setq lsp-clangd-executable (nix-find-clangd))))
+  (defun nix-lsp-clangd-c-enable ()
+    (interactive)
+    (nix-set-clangd)
+    (lsp-clangd-c-enable))
+  (defun nix-lsp-clangd-c++-enable ()
+    (interactive)
+    (nix-set-clangd)
+    (lsp-clangd-c++-enable))
+  (defun nix-lsp-clangd-objc-enable ()
+    (interactive)
+    (nix-set-clangd)
+    (lsp-clangd-objc-enable))
+  (defun nix-lsp-clangd-objc++-enable ()
+    (interactive)
+    (nix-set-clangd)
+    (lsp-clangd-objc++-enable))
   :hook
-  (c-mode-common . lsp-cquery-enable))
+  (c-mode . nix-lsp-clangd-c-enable)
+  (c++-mode . nix-lsp-clangd-c++-enable)
+  (objc-mode . nix-lsp-clangd-objc-enable))
+
+
+(use-package cquery
+  :disabled t
+  :commands lsp-cquery-enable
+  :init
+  (setq cquery-executable nil)
+  (defun nix-find-cquery ()
+    (interactive)
+    (nix-find-executable "cquery" "cquery"))
+  (defun nix-cquery-enable ()
+    (interactive)
+    (if (not cquery-executable)
+	(setq cquery-executable (nix-find-cquery)))
+    (lsp-cquery-enable))
+  :hook
+  (c-mode-common . nix-cquery-enable))
 
 (use-package flycheck)
   
@@ -216,6 +261,8 @@
   :mode ("\\.ya?ml\\'" "\.clang-format"))
 
 (use-package nix-update)
+
+(use-package nix-sandbox)
 
 (use-package nix-mode
   :mode "\\.nix\\'")
