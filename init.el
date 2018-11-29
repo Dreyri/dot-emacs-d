@@ -77,7 +77,7 @@
   (which-key-mode t))
 
 (use-package paredit
-  :delight t
+  :delight
   :hook
   (lisp-mode . paredit-mode)
   (common-lisp-mode . paredit-mode)
@@ -92,6 +92,7 @@
 
 (use-package evil-escape
   :after evil
+  :delight
   :init
   (setq-default evil-escape-key-sequence (kbd "fd"))
   (setq-default evil-escape-delay 0.125)
@@ -150,7 +151,7 @@
   :mode "\.gitignore")
 
 (use-package ivy
-  :delight t
+  :delight
   :config
   (setq ivy-height 20)
   (setq ivy-use-virtual-buffers t)
@@ -169,7 +170,7 @@
   (setq xref-show-xrefs-function #'ivy-xref-show-xrefs))
 
 (use-package counsel
-  :delight t
+  :delight
   :after ivy
   :config
   (counsel-mode))
@@ -180,7 +181,7 @@
   (ivy-rich-mode t))
 
 (use-package swiper
-  :delight t
+  :delight
   :after ivy
   :init
   (global-unset-key (kbd "C-s"))
@@ -208,7 +209,7 @@
   :bind ("<C-return>" . ace-window))
 
 (use-package projectile
-  :delight t
+  :delight
   :bind-keymap
   ("C-c p" . projectile-command-map)
   :config
@@ -234,7 +235,7 @@
 (use-package geiser)
 
 (use-package company
-  :delight t
+  :delight
   :defer 3
   :hook
   (after-init . global-company-mode))
