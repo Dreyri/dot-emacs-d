@@ -82,6 +82,15 @@
   :commands evil-mode)
 
 (use-package hydra)
+(use-package hydra
+  :config
+  (defhydra hydra-window-size (global-map "C-x w")
+    "window size"
+    ("=" enlarge-window "enlarge-v")
+    ("-" shrink-window "shrink-v")
+    ("+" enlarge-window-horizontally "enlarge-h")
+    ("_" shrink-window-horizontally "enlarge-v")
+    ("q" nil "quit")))
 
 (use-package org
   :ensure org-plus-contrib
