@@ -147,6 +147,10 @@
   :bind (:map ivy-switch-buffer-map
 	      ("C-k" . ivy-switch-buffer-kill)))
 
+(use-package ivy-xref
+  :init
+  (setq xref-show-xrefs-function #'ivy-xref-show-xrefs))
+
 (use-package counsel
   :delight t
   :after ivy
