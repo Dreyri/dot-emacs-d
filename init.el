@@ -168,6 +168,8 @@
 
 (use-package projectile
   :delight t
+  :bind-keymap
+  ("C-c p" . projectile-command-map)
   :config
   (projectile-mode t)
   (setq projectile-enable-caching t)
