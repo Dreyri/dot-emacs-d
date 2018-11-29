@@ -102,6 +102,8 @@
 (use-package org
   :ensure org-plus-contrib
   :mode (("\\.org$" . org-mode))
+  :init
+  (setq org-agenda-files '("~/org/tasks.org"))
   :config
   ()
   :bind (("C-c o c" . org-capture)
