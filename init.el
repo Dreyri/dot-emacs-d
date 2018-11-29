@@ -223,6 +223,8 @@
   :config
   (all-the-icons-ivy-setup))
 
+(use-package geiser)
+
 (use-package company
   :delight t
   :defer 3
