@@ -90,6 +90,14 @@
   :config
   (evil-mode))
 
+(use-package evil-escape
+  :after evil
+  :init
+  (setq-default evil-escape-key-sequence (kbd "fd"))
+  (setq-default evil-escape-delay 0.125)
+  :config
+  (evil-escape-mode))
+
 (use-package general
   :config
   (with-eval-after-load 'evil
