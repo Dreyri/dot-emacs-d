@@ -94,7 +94,7 @@
   :config
   (with-eval-after-load 'evil
     (general-define-key
-     :state 'motion
+     :states 'motion
      ";" #'evil-ex
      ":" #'evil-repeat-find-char)))
 
