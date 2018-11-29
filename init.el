@@ -86,9 +86,18 @@
   
   
 (use-package evil
-  :commands evil-mode)
+  :commands evil-mode
+  :init
+  (evil-mode))
 
-(use-package hydra)
+(use-package general
+  :config
+  (with-eval-after-load 'evil
+    (general-define-key
+     :state 'motion
+     ";" #'evil-ex
+     ":" #'evil-repeat-find-char)))
+
 (use-package hydra
   :config
   (defhydra hydra-window-size (global-map "C-x w")
@@ -165,7 +174,27 @@
 (use-package swiper
   :delight t
   :after ivy
-  :bind (("C-s" . swiper)))
+  :init
+  (global-unset-key (kbd "C-s"))
+  :bind (("C-s C-s" . swiper))
+  :config
+  (with-eval-after-load 'evil
+    (with-eval-after-load 'general
+      (general-define-key
+       :states 'motion
+       "/" #'swiper))))
+
+(use-package avy
+  :bind
+  ("C-s C-c" . avy-goto-char)
+  ("C-s C-l" . avy-goto-line)
+  :config
+  (with-eval-after-load 'evil
+    (with-eval-after-load 'general
+      (general-define-key
+       :states 'motion
+       "f" #'avy-goto-char
+       "gl" #'avy-goto-line))))
 
 (use-package ace-window
   :bind ("<C-return>" . ace-window))
@@ -287,7 +316,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (paredit nix-buffer flycheck nix-mode nix-update yaml-mode yasnippet ccls company-lsp company projectile ace-window ivy-rich counsel ivy gitignore-mode magit clang-format org-plus-contrib hydra evil which-key delight use-package))))
+    (general cmake-mode gitconfig-mode nix-sandbox lsp-clangd ivy-xref paredit nix-buffer flycheck nix-mode nix-update yaml-mode yasnippet ccls company-lsp company projectile ace-window ivy-rich counsel ivy gitignore-mode magit clang-format org-plus-contrib hydra evil which-key delight use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
