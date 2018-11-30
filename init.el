@@ -86,7 +86,8 @@
   
   
 (use-package evil
-  :config
+  :commands (evil-mode)
+  :init
   (evil-mode))
 
 (use-package evil-escape
