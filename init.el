@@ -133,6 +133,9 @@
 	 ("C-c o a" . org-agenda)
 	 ("C-c o j" . org-clock-jump-to-current-clock)))
 
+(use-package evil-org
+  :after (evil org))
+
 (use-package clang-format
   :init
   (setq clang-format-executable nil)
