@@ -122,6 +122,11 @@
   :config
   (evil-escape-mode))
 
+(use-package evil-surround
+  :after evil
+  :config
+  (global-evil-surround-mode 1))
+
 (use-package general
   :config
   (with-eval-after-load 'evil
