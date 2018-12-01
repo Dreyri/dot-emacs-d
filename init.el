@@ -60,7 +60,11 @@
     (set-frame-font "Fira Mono 11")
   (error nil))
 
+;; use the shorter y/n
+
 (fset 'yes-or-no-p 'y-or-n-p)
+
+;; utf8 should be expected
 
 (set-language-environment "UTF-8")
 
