@@ -130,6 +130,7 @@
   :config
   ()
   :bind (("C-c o c" . org-capture)
+	 ("C-c o a" . org-agenda)
 	 ("C-c o j" . org-clock-jump-to-current-clock)))
 
 (use-package clang-format
