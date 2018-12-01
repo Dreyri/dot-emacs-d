@@ -172,6 +172,8 @@
 (use-package evil-magit
   :after evil)
 
+(use-package git-commit)
+
 (use-package gitignore-mode
   :mode "\.gitignore")
 
