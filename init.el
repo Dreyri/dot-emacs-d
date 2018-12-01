@@ -174,6 +174,18 @@
 
 (use-package git-commit)
 
+(use-package git-timemachine
+  :commands (git-timemachine)
+  :bind (:map git-timemachine-mode-map
+	      ("M-p" . git-timemachine-show-previous-revision)
+	      ("M-n" . git-timemachine-show-next-revision)
+	      ("C-c C-l" . git-timemachine-show-current-revision)
+	      ("C-c C-n" . git-timemachine-show-nth-revision)
+	      ("C-c C-q" . git-timemachine-quit)
+	      ("C-c C-f" . git-timemachine-show-revision-fuzzy)
+	      ("C-c C-m" . git-timemachine-show-commit)
+	      ("C-c C-b" . git-timemachine-blame)))
+
 (use-package gitignore-mode
   :mode "\.gitignore")
 
