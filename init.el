@@ -77,6 +77,7 @@
   (which-key-mode t))
 
 (use-package paredit
+  :disabled t
   :delight
   :hook
   (lisp-mode . paredit-mode)
@@ -85,10 +86,18 @@
   (scheme-mode . paredit-mode))
 
 (use-package evil-paredit
+  :disabled t
   :delight
   :after (paredit evil)
   :hook
   (paredit-mode . evil-paredit-mode))
+
+(use-package lispy
+  :hook
+  (lisp-mode . lispy-mode)
+  (common-lisp-mode . lispy-mode)
+  (emacs-lisp-mode . lispy-mode)
+  (scheme-mode . lispy-mode))
 
 (use-package evil
   :commands (evil-mode)
@@ -361,7 +370,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (evil-paredit evil-magit powerline evil-escape all-the-icons-ivy all-the-icons company-box geiser general cmake-mode gitconfig-mode nix-sandbox lsp-clangd ivy-xref paredit nix-buffer flycheck nix-mode nix-update yaml-mode yasnippet ccls company-lsp company projectile ace-window ivy-rich counsel ivy gitignore-mode magit clang-format org-plus-contrib hydra evil which-key delight use-package))))
+    (lispy evil-paredit evil-magit powerline evil-escape all-the-icons-ivy all-the-icons company-box geiser general cmake-mode gitconfig-mode nix-sandbox lsp-clangd ivy-xref paredit nix-buffer flycheck nix-mode nix-update yaml-mode yasnippet ccls company-lsp company projectile ace-window ivy-rich counsel ivy gitignore-mode magit clang-format org-plus-contrib hydra evil which-key delight use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
