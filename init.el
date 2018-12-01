@@ -54,6 +54,11 @@
 (toggle-scroll-bar t)
 (tool-bar-mode -1)
 
+;; always have parenthesis mode on
+
+(show-paren-mode 1)
+(setq show-paren-delay 0)
+
 ;; TODO decide whether I need line numbers
 
 (condition-case nil
