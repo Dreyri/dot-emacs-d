@@ -83,8 +83,13 @@
   (common-lisp-mode . paredit-mode)
   (emacs-lisp-mode . paredit-mode)
   (scheme-mode . paredit-mode))
-  
-  
+
+(use-package evil-paredit
+  :delight
+  :after (paredit evil)
+  :hook
+  (paredit-mode . evil-paredit-mode))
+
 (use-package evil
   :commands (evil-mode)
   :init
