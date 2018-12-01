@@ -169,6 +169,10 @@
 (use-package magit
   :bind (("C-x g". magit-status)))
 
+(use-package magit-gh-pulls
+  :after magit
+  :hook
+  (magit-mode . turn-on-magit-gh-pulls))
 
 (use-package magit-gitflow
   :disabled t
