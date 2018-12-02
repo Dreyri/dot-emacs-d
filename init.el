@@ -150,6 +150,10 @@
   :mode (("\\.org$" . org-mode))
   :init
   (setq org-agenda-files '("~/org/tasks.org"))
+  :hook
+  (org-mode . (lambda ()
+		(setq fill-column 80)
+		(auto-fill-mode)))
   :config
   ()
   :bind (("C-c o c" . org-capture)
