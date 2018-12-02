@@ -184,6 +184,7 @@
   :bind (("C-x g". magit-status)))
 
 (use-package magit-gh-pulls
+  :disabled t
   :after magit
   :hook
   (magit-mode . turn-on-magit-gh-pulls))
