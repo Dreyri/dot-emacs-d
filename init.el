@@ -327,6 +327,11 @@
   :hook
   (lsp-mode . lsp-ui-mode))
 
+(use-package lsp-rust
+  :after lsp-mode
+  :hook
+  (rust-mode . lsp-rust-enable))
+
 (use-package ccls
   :disabled t
   :commands lsp-ccls-enable
