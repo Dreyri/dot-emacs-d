@@ -155,7 +155,11 @@
 		(setq fill-column 80)
 		(auto-fill-mode)))
   :config
-  ()
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((python . t)
+     (shell . t)
+     (latex . t)))
   :bind (("C-c o c" . org-capture)
 	 ("C-c o a" . org-agenda)
 	 ("C-c o j" . org-clock-jump-to-current-clock)))
