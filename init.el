@@ -108,6 +108,10 @@
   (emacs-lisp-mode . lispy-mode)
   (scheme-mode . lispy-mode))
 
+(use-package lispyville
+  :hook
+  (lispy-mode . lispyville-mode))
+
 (use-package evil
   :commands (evil-mode)
   :init
@@ -275,7 +279,12 @@
        "gl" #'avy-goto-line))))
 
 (use-package ace-window
-  :bind ("<C-return>" . ace-window))
+  :bind ("<C-return>" . ace-window)
+  :config
+  (with-eval-after-load 'hydra
+    (defhydra hydra-window-control (global-map "C-w")
+      ("/" split-window-horizontally)
+      ("-" split-window-vertically))))
 
 (use-package projectile
   :delight
@@ -332,9 +341,12 @@
   (lsp-mode . lsp-ui-mode))
 
 (use-package lsp-rust
-  :after lsp-mode
   :hook
   (rust-mode . lsp-rust-enable))
+
+(use-package cargo
+  :hook
+  (rust-mode . cargo-minor-mode))
 
 (use-package ccls
   :disabled t
