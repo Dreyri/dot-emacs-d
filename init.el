@@ -57,9 +57,6 @@
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil)))
 (setq mouse-wheel-progressive-speed nil)
 
-;; TODO set backup folder and remove # files
-
-
 ;; disable all unneeded bars
 
 (menu-bar-mode -1)
