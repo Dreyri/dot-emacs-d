@@ -383,6 +383,11 @@
 (use-package gitconfig-mode
   :mode ("\.gitconfig"))
 
+(use-package lua-mode
+  :mode "\\.lua\\'"
+  :init
+  (setq-default lua-indent-level 4))
+
 (use-package yaml-mode
   :mode ("\\.ya?ml\\'" "\.clang-format"))
 
