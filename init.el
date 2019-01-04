@@ -357,51 +357,16 @@
   (c-mode-common . lsp-ccls-enable))
 
 (use-package lsp-clangd
-  :disabled t
-  :init
-  (setq lsp-clangd-executable nil)
-  (defun nix-find-clangd ()
-    (nix-find-executable "clang_7" "clangd"))
-  (defun nix-set-clangd ()
-    (if (not lsp-clangd-executable)
-	(setq lsp-clangd-executable (nix-find-clangd))))
-  (defun nix-lsp-clangd-c-enable ()
-    (interactive)
-    (nix-set-clangd)
-    (lsp-clangd-c-enable))
-  (defun nix-lsp-clangd-c++-enable ()
-    (interactive)
-    (nix-set-clangd)
-    (lsp-clangd-c++-enable))
-  (defun nix-lsp-clangd-objc-enable ()
-    (interactive)
-    (nix-set-clangd)
-    (lsp-clangd-objc-enable))
-  (defun nix-lsp-clangd-objc++-enable ()
-    (interactive)
-    (nix-set-clangd)
-    (lsp-clangd-objc++-enable))
   :hook
-  (c-mode . nix-lsp-clangd-c-enable)
-  (c++-mode . nix-lsp-clangd-c++-enable)
-  (objc-mode . nix-lsp-clangd-objc-enable))
-
+  (c-mode . lsp-clangd-c-enable)
+  (c++-mode . lsp-clangd-c++-enable)
+  (objc-mode . lsp-clangd-objc-enable))
 
 (use-package cquery
   :disabled t
   :commands lsp-cquery-enable
-  :init
-  (setq cquery-executable nil)
-  (defun nix-find-cquery ()
-    (interactive)
-    (nix-find-executable "cquery" "cquery"))
-  (defun nix-cquery-enable ()
-    (interactive)
-    (if (not cquery-executable)
-	(setq cquery-executable (nix-find-cquery)))
-    (lsp-cquery-enable))
   :hook
-  (c-mode-common . nix-cquery-enable))
+  (c-mode-common . lsp-cquery-enable))
 
 (use-package flycheck)
   
@@ -438,7 +403,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (org-evil cargo magit-gh-pulls magit-gitflow git-timemachine evil-surround lispyville lispy evil-paredit evil-magit powerline evil-escape all-the-icons-ivy all-the-icons company-box geiser general cmake-mode gitconfig-mode nix-sandbox lsp-clangd ivy-xref paredit nix-buffer flycheck nix-mode nix-update yaml-mode yasnippet ccls company-lsp company projectile ace-window ivy-rich counsel ivy gitignore-mode magit clang-format org-plus-contrib hydra evil which-key delight use-package))))
+    (projectile-ripgrep ripgrep lua-mode org-evil cargo magit-gh-pulls magit-gitflow git-timemachine evil-surround lispyville lispy evil-paredit evil-magit powerline evil-escape all-the-icons-ivy all-the-icons company-box geiser general cmake-mode gitconfig-mode nix-sandbox lsp-clangd ivy-xref paredit nix-buffer flycheck nix-mode nix-update yaml-mode yasnippet ccls company-lsp company projectile ace-window ivy-rich counsel ivy gitignore-mode magit clang-format org-plus-contrib hydra evil which-key delight use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
