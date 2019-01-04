@@ -15,6 +15,7 @@
    (shell-command-to-string
     (concat "nix-shell -p " pkg " --run 'which " executable "'"))))
 
+;; this is so annoying so get this out of here
 (setq ring-bell-function 'ignore)
 
 ;; stop blinking
