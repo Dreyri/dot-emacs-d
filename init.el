@@ -102,6 +102,7 @@
   (paredit-mode . evil-paredit-mode))
 
 (use-package lispy
+  :disabled t
   :hook
   (lisp-mode . lispy-mode)
   (common-lisp-mode . lispy-mode)
@@ -109,6 +110,7 @@
   (scheme-mode . lispy-mode))
 
 (use-package lispyville
+  :disabled t
   :hook
   (lispy-mode . lispyville-mode))
 
