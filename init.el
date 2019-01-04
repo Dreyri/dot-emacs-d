@@ -17,7 +17,9 @@
 
 (setq ring-bell-function 'ignore)
 
-(blink-cursor-mode nil)
+;; stop blinking
+(blink-cursor-mode -1)
+
 
 (setq-default truncate-lines nil)
 (setq-default word-wrap t)
