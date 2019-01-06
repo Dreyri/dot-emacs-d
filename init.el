@@ -9,6 +9,7 @@
   (load-file (concat user-emacs-directory "init.el")))
 
 (defun nix-find-executable (pkg executable)
+  "Find the executable within the specified package"
   (interactive
    "spkg: \nsexecutable: \n")
   (string-trim
