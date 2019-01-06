@@ -52,7 +52,7 @@
 
 ;; personal info TODO offload this to another file
 (setq user-full-name "Frederik Engels"
-      user-mail-address "frederik.engels24@gmail.com")
+      user-mail-address "frederik.engels92@gmail.com")
 
 ;; mouse wheel more suitable for touchpad
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil)))
