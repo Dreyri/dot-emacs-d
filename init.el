@@ -35,6 +35,15 @@
 (setq-default truncate-lines nil)
 (setq-default word-wrap t)
 
+;; show relative line number
+
+(setq-default display-line-numbers 'visual
+	      display-line-numbers-widen t
+	      display-line-numbers-current-absolute t)
+
+;; make the current line bold
+(custom-set-faces '(line-number-current-line ((t :weight bold))))
+
 (require 'package)
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
 			 ("melpa" . "https://melpa.org/packages/")
