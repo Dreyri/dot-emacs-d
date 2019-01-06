@@ -1,9 +1,9 @@
-(defun my-edit-init ()
+(defun my-init-edit ()
   "Open the init file for editing"
   (interactive)
   (find-file (concat user-emacs-directory "init.el")))
 
-(defun my-edit-load ()
+(defun my-init-load ()
   "Load the init file"
   (interactive)
   (load-file (concat user-emacs-directory "init.el")))
