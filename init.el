@@ -248,21 +248,9 @@
   :after (evil org))
 
 (use-package clang-format
-  :init
-  (setq clang-format-executable nil)
-  (defun nix-find-clang-format-executable ()
-    (interactive)
-    (if (not clang-format-executable)
-	(nix-find-executable "clang_7" "clang-format")
-      clang-format-executable))
-  (defun nix-clang-format-buffer ()
-    (interactive)
-    (if (not clang-format-executable)
-	(setq clang-format-executable (nix-find-clang-format-executable)))
-    (clang-format-buffer))
   :bind
   (:map c-mode-base-map
-	("C-c C-f" . nix-clang-format-buffer)))
+	("C-c C-f" . clang-format)))
 
 (use-package modern-cpp-font-lock
   :hook
