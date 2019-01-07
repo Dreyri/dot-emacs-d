@@ -175,6 +175,7 @@
 
 	"f" '(:ignore t :which-key "file")
 	"ff" '(find-file :which-key "find")
+	"fw" '(write-file :which-key "write")
 	"fr" '(rename-file :which-key "rename")
 	"fd" '(delete-file :which-key "delete")
 
