@@ -160,10 +160,35 @@
 (use-package general
   :config
   (with-eval-after-load 'evil
-    (general-define-key
-     :states 'motion
-     ";" #'evil-ex
-     ":" #'evil-repeat-find-char)))
+    (progn
+      (general-define-key
+       :states 'motion
+       ";" #'evil-ex
+       ":" #'evil-repeat-find-char)
+      (general-create-definer my-leader-def
+	:states '(normal insert motion visual emacs)
+	:keymaps 'override
+	:prefix "SPC"
+	:non-normal-prefix "M-SPC")
+      (my-leader-def
+	"SPC" '(counsel-M-x :which-key "M-x")
+
+	"w" '(:ignore t :which-key "window")
+	"ww" '(ace-window :which-key "ace")
+	"wq" '(delete-window :which-key "delete")
+
+	"wh" '(windmove-left :which-key "left")
+	"wl" '(windmove-right :which-key "right")
+	"wj" '(windmove-down :which-key "down")
+	"wk" '(windmove-up :which-key "up")
+
+	"w=" '(balance-windows :which-key "balance")
+	"w/" '(split-window-horizontally :which-key "split horizontal")
+	"w-" '(split-window-vertically :which-key "split vertical")
+
+	"b" '(:ignore t :which-key "buffer")
+	"bb" '(ivy-switch-buffer :which-key "switch")))))
+
 
 (use-package hydra
   :config
