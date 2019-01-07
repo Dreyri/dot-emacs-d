@@ -187,6 +187,7 @@
 
 	"w" '(:ignore t :which-key "window")
 	"wq" '(delete-window :which-key "delete")
+	"wd" '(kill-buffer-and-window :which-key "delete buffer and window")
 
 	"wh" '(windmove-left :which-key "left")
 	"wl" '(windmove-right :which-key "right")
