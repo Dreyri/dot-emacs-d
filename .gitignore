@@ -9,3 +9,4 @@ url/
 session.*
 projectile.cache
 eshell/
+.lsp-session-v1
