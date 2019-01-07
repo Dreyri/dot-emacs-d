@@ -345,6 +345,7 @@
        "/" #'swiper))))
 
 (use-package avy
+  :disabled t
   :bind
   ("C-s C-c" . avy-goto-char)
   ("C-s C-l" . avy-goto-line)
@@ -366,6 +367,13 @@
     (defhydra hydra-window-control (global-map "C-w")
       ("/" split-window-horizontally)
       ("-" split-window-vertically))))
+
+(use-package ace-jump-mode
+  :config
+  (with-eval-after-load 'general
+    (general-define-key
+     "M-g l" '(ace-jump-line-mode :which-key "ace jump line")
+     "M-g f" '(ace-jump-char-mode :which-key "find char"))))
 
 (use-package projectile
   :delight
@@ -488,5 +496,5 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (ace-jump-mode org-bullets golden-ratio projectile-ripgrep ripgrep lua-mode org-evil cargo magit-gh-pulls magit-gitflow git-timemachine evil-surround lispyville lispy evil-paredit evil-magit powerline evil-escape all-the-icons-ivy all-the-icons company-box geiser general cmake-mode gitconfig-mode nix-sandbox lsp-clangd ivy-xref paredit nix-buffer flycheck nix-mode nix-update yaml-mode yasnippet ccls company-lsp company projectile ace-window ivy-rich counsel ivy gitignore-mode magit clang-format org-plus-contrib hydra evil which-key delight use-package))))
+    (moe-theme ace-jump ace-jump-mode org-bullets golden-ratio projectile-ripgrep ripgrep lua-mode org-evil cargo magit-gh-pulls magit-gitflow git-timemachine evil-surround lispyville lispy evil-paredit evil-magit powerline evil-escape all-the-icons-ivy all-the-icons company-box geiser general cmake-mode gitconfig-mode nix-sandbox lsp-clangd ivy-xref paredit nix-buffer flycheck nix-mode nix-update yaml-mode yasnippet ccls company-lsp company projectile ace-window ivy-rich counsel ivy gitignore-mode magit clang-format org-plus-contrib hydra evil which-key delight use-package))))
 
