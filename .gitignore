@@ -11,3 +11,5 @@ projectile.cache
 eshell/
 .lsp-session-v1
 forge-database.sqlite
+elisp/
+request/
