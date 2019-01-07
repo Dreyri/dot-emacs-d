@@ -424,6 +424,10 @@
   :hook
   (after-init . global-company-mode))
 
+(use-package company-quickhelp
+  :hook
+  (company-mode . company-quickhelp-mode))
+
 (use-package company-box
   :disabled t
   :hook
