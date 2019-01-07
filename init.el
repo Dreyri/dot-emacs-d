@@ -189,6 +189,13 @@
 	"b" '(:ignore t :which-key "buffer")
 	"bb" '(ivy-switch-buffer :which-key "switch")))))
 
+(use-package golden-ratio
+  :commands golden-ratio
+  :init
+  (with-eval-after-load 'evil
+    (with-eval-after-load 'general
+      (my-leader-def
+	"wg" '(golden-ratio :which-key "golden ratio")))))
 
 (use-package hydra
   :config
@@ -450,6 +457,7 @@
 (use-package cmake-mode
   :mode (("CMakeLists.txt" . cmake-mode)
 	 ("\\.cmake\\'" . cmake-mode)))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -457,10 +465,5 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (projectile-ripgrep ripgrep lua-mode org-evil cargo magit-gh-pulls magit-gitflow git-timemachine evil-surround lispyville lispy evil-paredit evil-magit powerline evil-escape all-the-icons-ivy all-the-icons company-box geiser general cmake-mode gitconfig-mode nix-sandbox lsp-clangd ivy-xref paredit nix-buffer flycheck nix-mode nix-update yaml-mode yasnippet ccls company-lsp company projectile ace-window ivy-rich counsel ivy gitignore-mode magit clang-format org-plus-contrib hydra evil which-key delight use-package))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+    (golden-ratio projectile-ripgrep ripgrep lua-mode org-evil cargo magit-gh-pulls magit-gitflow git-timemachine evil-surround lispyville lispy evil-paredit evil-magit powerline evil-escape all-the-icons-ivy all-the-icons company-box geiser general cmake-mode gitconfig-mode nix-sandbox lsp-clangd ivy-xref paredit nix-buffer flycheck nix-mode nix-update yaml-mode yasnippet ccls company-lsp company projectile ace-window ivy-rich counsel ivy gitignore-mode magit clang-format org-plus-contrib hydra evil which-key delight use-package))))
+
