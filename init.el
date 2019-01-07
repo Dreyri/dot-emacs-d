@@ -450,7 +450,12 @@
 
 (use-package flycheck
   :config
-  (global-flycheck-mode))
+  (global-flycheck-mode)
+  (with-eval-after-load 'general
+    (my-leader-def
+      "c" '(:ignore t :which-key "flycheck")
+      "cj" '(flycheck-next-error :which-key "next error")
+      "ck" '(flycheck-previous-error :which-key "prev error"))))
 
 (use-package flycheck-popup-tip
   :hook
