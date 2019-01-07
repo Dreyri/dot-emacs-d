@@ -359,7 +359,6 @@
        "gl" #'avy-goto-line))))
 
 (use-package ace-window
-  :bind ("<C-return>" . ace-window)
   :config
   (with-eval-after-load 'general
     (my-leader-def
