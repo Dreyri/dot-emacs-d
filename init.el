@@ -448,24 +448,6 @@
   :hook
   (rust-mode . cargo-minor-mode))
 
-(use-package ccls
-  :disabled t
-  :commands lsp-ccls-enable
-  :hook
-  (c-mode-common . lsp-ccls-enable))
-
-(use-package lsp-clangd
-  :hook
-  (c-mode . lsp-clangd-c-enable)
-  (c++-mode . lsp-clangd-c++-enable)
-  (objc-mode . lsp-clangd-objc-enable))
-
-(use-package cquery
-  :disabled t
-  :commands lsp-cquery-enable
-  :hook
-  (c-mode-common . lsp-cquery-enable))
-
 (use-package flycheck
   :config
   (global-flycheck-mode))
@@ -518,5 +500,5 @@
  '(global-flycheck-mode t)
  '(package-selected-packages
    (quote
-    (ace-jump-buffer flycheck-popup-tip moe-theme ace-jump ace-jump-mode org-bullets golden-ratio projectile-ripgrep ripgrep lua-mode org-evil cargo magit-gh-pulls magit-gitflow git-timemachine evil-surround lispyville lispy evil-paredit evil-magit powerline evil-escape all-the-icons-ivy all-the-icons company-box geiser general cmake-mode gitconfig-mode nix-sandbox lsp-clangd ivy-xref paredit nix-buffer flycheck nix-mode nix-update yaml-mode yasnippet ccls company-lsp company projectile ace-window ivy-rich counsel ivy gitignore-mode magit clang-format org-plus-contrib hydra evil which-key delight use-package))))
+    (evil-smartparens ace-jump-buffer flycheck-popup-tip moe-theme ace-jump ace-jump-mode org-bullets golden-ratio projectile-ripgrep ripgrep lua-mode org-evil cargo magit-gh-pulls magit-gitflow git-timemachine evil-surround lispyville lispy evil-paredit evil-magit powerline evil-escape all-the-icons-ivy all-the-icons company-box geiser general cmake-mode gitconfig-mode nix-sandbox lsp-clangd ivy-xref paredit nix-buffer flycheck nix-mode nix-update yaml-mode yasnippet ccls company-lsp company projectile ace-window ivy-rich counsel ivy gitignore-mode magit clang-format org-plus-contrib hydra evil which-key delight use-package))))
 
