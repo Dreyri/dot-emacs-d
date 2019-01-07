@@ -81,7 +81,8 @@
 ;; always have parenthesis mode on
 
 (show-paren-mode 1)
-(setq show-paren-delay 0)
+(setq show-paren-style 'expression
+      show-paren-delay 0)
 
 ;; TODO decide whether I need line numbers
 
