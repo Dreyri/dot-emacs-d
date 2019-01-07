@@ -293,7 +293,11 @@
 	      ("C-c C-q" . git-timemachine-quit)
 	      ("C-c C-f" . git-timemachine-show-revision-fuzzy)
 	      ("C-c C-m" . git-timemachine-show-commit)
-	      ("C-c C-b" . git-timemachine-blame)))
+	      ("C-c C-b" . git-timemachine-blame))
+  :init
+  (with-eval-after-load 'general
+    (my-leader-def
+      "gt" '(git-timemachine :which-key "timemachine"))))
 
 (use-package gitignore-mode
   :mode "\.gitignore")
