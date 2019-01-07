@@ -373,7 +373,7 @@
   (with-eval-after-load 'general
     (general-define-key
      "M-g l" '(ace-jump-line-mode :which-key "ace jump line")
-     "M-g f" '(ace-jump-char-mode :which-key "find char"))))
+     "M-g c" '(ace-jump-char-mode :which-key "find char"))))
 
 (use-package projectile
   :delight
