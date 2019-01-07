@@ -257,6 +257,10 @@
   (:map c-mode-base-map
 	("C-c C-f" . nix-clang-format-buffer)))
 
+(use-package modern-cpp-font-lock
+  :hook
+  (c++-mode . modern-c++-font-lock-mode))
+
 (use-package magit
   :bind (("C-x g". magit-status)))
 
