@@ -201,6 +201,7 @@
 	"bb" '(ivy-switch-buffer :which-key "switch")
 	"bh" '(previous-buffer :which-key "previous")
 	"bl" '(next-buffer :which-key "next")))))
+	"g" '(:ignore t :which-key "git")))))
 
 (use-package golden-ratio
   :commands golden-ratio
@@ -268,7 +269,11 @@
   (c++-mode . modern-c++-font-lock-mode))
 
 (use-package magit
-  :bind (("C-x g". magit-status)))
+  :bind (("C-x g". magit-status))
+  :config
+  (with-eval-after-load 'general
+    (my-leader-def
+      "gs" '(magit-status :which-key "magit status"))))
 
 (use-package magit-gh-pulls
   :disabled t
