@@ -406,6 +406,10 @@
   :config
   (powerline-default-theme))
 
+(use-package moe-theme
+  :config
+  (moe-dark))
+
 (use-package company
   :delight
   :defer 3
