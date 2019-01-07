@@ -200,7 +200,9 @@
 	"b" '(:ignore t :which-key "buffer")
 	"bb" '(ivy-switch-buffer :which-key "switch")
 	"bh" '(previous-buffer :which-key "previous")
-	"bl" '(next-buffer :which-key "next")))))
+	"bl" '(next-buffer :which-key "next")
+	"bq" '(kill-current-buffer :which-key "kill current buffer")
+
 	"g" '(:ignore t :which-key "git")))))
 
 (use-package golden-ratio
