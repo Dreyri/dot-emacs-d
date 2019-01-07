@@ -183,7 +183,6 @@
 	"fec" '(my-init-edit :which-key "edit")
 
 	"w" '(:ignore t :which-key "window")
-	"ww" '(ace-window :which-key "ace")
 	"wq" '(delete-window :which-key "delete")
 
 	"wh" '(windmove-left :which-key "left")
@@ -358,6 +357,9 @@
 (use-package ace-window
   :bind ("<C-return>" . ace-window)
   :config
+  (with-eval-after-load 'general
+    (my-leader-def
+      "ww" '(ace-window :which-key "ace")))
   (with-eval-after-load 'hydra
     (defhydra hydra-window-control (global-map "C-w")
       ("/" split-window-horizontally)
@@ -484,5 +486,5 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (org-bullets golden-ratio projectile-ripgrep ripgrep lua-mode org-evil cargo magit-gh-pulls magit-gitflow git-timemachine evil-surround lispyville lispy evil-paredit evil-magit powerline evil-escape all-the-icons-ivy all-the-icons company-box geiser general cmake-mode gitconfig-mode nix-sandbox lsp-clangd ivy-xref paredit nix-buffer flycheck nix-mode nix-update yaml-mode yasnippet ccls company-lsp company projectile ace-window ivy-rich counsel ivy gitignore-mode magit clang-format org-plus-contrib hydra evil which-key delight use-package))))
+    (ace-jump-mode org-bullets golden-ratio projectile-ripgrep ripgrep lua-mode org-evil cargo magit-gh-pulls magit-gitflow git-timemachine evil-surround lispyville lispy evil-paredit evil-magit powerline evil-escape all-the-icons-ivy all-the-icons company-box geiser general cmake-mode gitconfig-mode nix-sandbox lsp-clangd ivy-xref paredit nix-buffer flycheck nix-mode nix-update yaml-mode yasnippet ccls company-lsp company projectile ace-window ivy-rich counsel ivy gitignore-mode magit clang-format org-plus-contrib hydra evil which-key delight use-package))))
 
