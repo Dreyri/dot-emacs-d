@@ -187,7 +187,9 @@
 	"w-" '(split-window-vertically :which-key "split vertical")
 
 	"b" '(:ignore t :which-key "buffer")
-	"bb" '(ivy-switch-buffer :which-key "switch")))))
+	"bb" '(ivy-switch-buffer :which-key "switch")
+	"bh" '(previous-buffer :which-key "previous")
+	"bl" '(next-buffer :which-key "next")))))
 
 (use-package golden-ratio
   :commands golden-ratio
