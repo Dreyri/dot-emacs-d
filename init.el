@@ -173,6 +173,15 @@
       (my-leader-def
 	"SPC" '(counsel-M-x :which-key "M-x")
 
+	"f" '(:ignore t :which-key "file")
+	"ff" '(find-file :which-key "find")
+	"fr" '(rename-file :which-key "rename")
+	"fd" '(delete-file :which-key "delete")
+
+	"fe" '(:ignore t :which-key "emacs")
+	"fer" '(my-init-load :which-key "reload")
+	"fec" '(my-init-edit :which-key "edit")
+
 	"w" '(:ignore t :which-key "window")
 	"ww" '(ace-window :which-key "ace")
 	"wq" '(delete-window :which-key "delete")
