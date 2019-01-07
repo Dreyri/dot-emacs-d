@@ -1,15 +1,16 @@
+
 (defun my-init-edit ()
-  "Open the init file for editing"
+  "Open the init file for editing."
   (interactive)
   (find-file (concat user-emacs-directory "init.el")))
 
 (defun my-init-load ()
-  "Load the init file"
+  "Load the init file."
   (interactive)
   (load-file (concat user-emacs-directory "init.el")))
 
 (defun nix-find-executable (pkg executable)
-  "Find the executable within the specified package"
+  "Find the EXECUTABLE within the specified PKG."
   (interactive
    "spkg: \nsexecutable: \n")
   (string-trim
