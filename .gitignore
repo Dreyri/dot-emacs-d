@@ -10,3 +10,4 @@ session.*
 projectile.cache
 eshell/
 .lsp-session-v1
+forge-database.sqlite
