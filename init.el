@@ -429,15 +429,17 @@
   (push 'company-lsp company-backends))
 
 (use-package lsp-mode
-  :defer t)
+  :commands lsp
+  :config (require 'lsp-clients))
 
 (use-package lsp-ui
   :hook
   (lsp-mode . lsp-ui-mode))
 
-(use-package lsp-rust
+(use-package rust-mode
+  :mode ("\\.rs\\'" . rust-mode)
   :hook
-  (rust-mode . lsp-rust-enable))
+  (rust-mode . lsp))
 
 (use-package cargo
   :hook
