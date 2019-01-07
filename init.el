@@ -469,7 +469,6 @@
   (global-flycheck-mode))
 
 (use-package flycheck-popup-tip
-  :disabled t
   :hook
   (flycheck-mode . flycheck-popup-tip-mode))
 
