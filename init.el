@@ -143,7 +143,14 @@
 (use-package evil
   :commands (evil-mode)
   :init
+  (setq evil-want-integration t
+	evil-want-keybinding nil)
   (evil-mode))
+
+(use-package evil-collection
+  :after evil
+  :config
+  (evil-collection-init))
 
 (use-package evil-escape
   :after evil
