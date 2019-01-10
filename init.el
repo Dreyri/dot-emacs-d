@@ -87,9 +87,8 @@
 
 ;; TODO decide whether I need line numbers
 
-(condition-case nil
-    (set-frame-font "Fira Mono 11")
-  (error nil))
+(add-to-list 'default-frame-alist
+	      '(font . "Fira Mono 11"))
 
 ;; use the shorter y/n
 
