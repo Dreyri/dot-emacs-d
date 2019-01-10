@@ -441,15 +441,16 @@
   (with-eval-after-load 'general
     (my-leader-def
       "p" '(:ignore t :which-key "projectile")
-      "p p" '(projectile-switch-project :which-key "switch project")
-      "p q" '(projectile-switch-open-project :which-key "switch open project")
-      "p a" '(projectile-find-other-file :which-key "find other file")
-      "p I" '(projectile-ibuffer :which-key "ibuffer")
+      "pp" '(projectile-switch-project :which-key "switch project")
+      "pq" '(projectile-switch-open-project :which-key "switch open project")
+      "pa" '(projectile-find-other-file :which-key "find other file")
+      "pI" '(projectile-ibuffer :which-key "ibuffer")
+      "pf" '(projectile-find-file :which-key "find file")
 
-      "p s" '(:ignore t :which-key "search")
-      "p s r" '(projectile-ripgrep :which-key "ripgrep")
-      "p s s" '(projectile-ag :which-key "ag")
-      "p s g" '(projectile-grep :which-key "grep"))))
+      "ps" '(:ignore t :which-key "search")
+      "psr" '(projectile-ripgrep :which-key "ripgrep")
+      "pss" '(projectile-ag :which-key "ag")
+      "psg" '(projectile-grep :which-key "grep"))))
 
 ;; don't forget to run M-x all-the-icons-install-fonts
 ;; I wanted to use this package to setup in combination with company-box but I'm not sure how so disabled for a while
