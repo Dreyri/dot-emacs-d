@@ -447,16 +447,18 @@
 
 (use-package lsp-mode
   :commands lsp
-  :config (require 'lsp-clients))
+  :config (require 'lsp-clients)
+  :hook
+  (c++-mode . lsp)
+  (c-mode . lsp)
+  (rust-mode . lsp))
 
 (use-package lsp-ui
   :hook
   (lsp-mode . lsp-ui-mode))
 
 (use-package rust-mode
-  :mode ("\\.rs\\'" . rust-mode)
-  :hook
-  (rust-mode . lsp))
+  :mode ("\\.rs\\'" . rust-mode))
 
 (use-package cargo
   :mode ("Cargo\.toml" . cargo-minor-mode)
