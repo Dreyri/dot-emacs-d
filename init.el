@@ -236,6 +236,7 @@
   :mode (("\\.org$" . org-mode))
   :init
   (setq org-agenda-files '("~/org/tasks.org"))
+  (setq org-refile-targets '(()))
   :hook
   (org-mode . (lambda ()
 		(setq fill-column 80)
@@ -246,9 +247,45 @@
    '((python . t)
      (shell . t)
      (latex . t)))
+  :init
+  (with-eval-after-load 'general
+    (my-leader-def
+      "o" '(:ignore t :which-key "org")
+
+      "o c" '(org-capture :which-key "capture")
+      "o a" '(org-agenda :which-key "agenda")
+
+      "o x" '(:ignore t :which-key "clock")
+      "o x j" '(org-clock-jump-to-current-clock :which-key "current clock")
+      "o x i" '(org-clock-in :which-key "clock in")
+      "o x o" '(org-clock-out :which-key "clock out")))
   :bind (("C-c o c" . org-capture)
 	 ("C-c o a" . org-agenda)
-	 ("C-c o j" . org-clock-jump-to-current-clock)))
+	 ("C-c o x j" . org-clock-jump-to-current-clock)))
+
+(use-package org-journal
+  :after org
+  :bind (("C-c o j t" . org-journal-new-entry)
+	 ("C-c o j y" . my-journal-yesterday))
+  :config
+  (with-eval-after-load 'general
+    (my-leader-def
+      "o j" '(:ignore t :which-key "journal")
+      "o j t" '(my-journal-new-entry :which-key "today")
+      "o j y" '(my-journal-yesterday :which-key "yesterday")))
+  :init
+  (setq org-journal-dir "~/org/journal/"
+	org-journal-file-format "%Y%m%d")
+  :preface
+  (defun my-journal-get-yesterday ()
+    "Gets the filename for yesterday's entry"
+    (let* ((yesterday (time-subtract (current-time) (days-to-time 1)))
+	   (daily-name (format-time-string "%Y%m%d" yesterday)))
+      (expand-file-name (concat org-journal-dir daily-name))))
+  (defun my-journal-yesterday ()
+    "Open yesterday's journal entry"
+    (interactive)
+    (find-file (my-journal-get-yesterday))))
 
 (use-package org-bullets
   :hook
@@ -523,5 +560,5 @@
  '(global-flycheck-mode t)
  '(package-selected-packages
    (quote
-    (ivy-youtube http evil-collection request-deferred deferred toml restclient json-rpc jsonrpc company-quickhelp-mode evil-smartparens ace-jump-buffer flycheck-popup-tip moe-theme ace-jump ace-jump-mode org-bullets golden-ratio projectile-ripgrep ripgrep lua-mode org-evil cargo magit-gh-pulls magit-gitflow git-timemachine evil-surround lispyville lispy evil-paredit evil-magit powerline evil-escape all-the-icons-ivy all-the-icons company-box geiser general cmake-mode gitconfig-mode nix-sandbox lsp-clangd ivy-xref paredit nix-buffer flycheck nix-mode nix-update yaml-mode yasnippet ccls company-lsp company projectile ace-window ivy-rich counsel ivy gitignore-mode magit clang-format org-plus-contrib hydra evil which-key delight use-package))))
+    (org-journal ivy-youtube http evil-collection request-deferred deferred toml restclient json-rpc jsonrpc company-quickhelp-mode evil-smartparens ace-jump-buffer flycheck-popup-tip moe-theme ace-jump ace-jump-mode org-bullets golden-ratio projectile-ripgrep ripgrep lua-mode org-evil cargo magit-gh-pulls magit-gitflow git-timemachine evil-surround lispyville lispy evil-paredit evil-magit powerline evil-escape all-the-icons-ivy all-the-icons company-box geiser general cmake-mode gitconfig-mode nix-sandbox lsp-clangd ivy-xref paredit nix-buffer flycheck nix-mode nix-update yaml-mode yasnippet ccls company-lsp company projectile ace-window ivy-rich counsel ivy gitignore-mode magit clang-format org-plus-contrib hydra evil which-key delight use-package))))
 
