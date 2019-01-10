@@ -432,10 +432,9 @@
   :config
   (projectile-mode t)
   (setq projectile-enable-caching t)
-  (add-to-list 'projectile-globally-ignored-directories '("build"
-							  ".cquery_cached_index"))
-  (add-to-list 'projectile-globally-ignored-file-suffixes '(".o"
-							    ".so"))
+  (add-to-list 'projectile-globally-ignored-directories "build")
+  (add-to-list 'projectile-globally-ignored-file-suffixes ".o")
+  (add-to-list 'projectile-globally-ignored-file-suffixes ".so")
   :init
   (with-eval-after-load 'general
     (my-leader-def
