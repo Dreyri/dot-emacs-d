@@ -500,7 +500,12 @@
 
 (use-package lsp-mode
   :commands lsp
-  :config (require 'lsp-clients)
+  :config
+  (require 'lsp-clients)
+  (with-eval-after-load 'general
+    (my-leader-def
+      "l" '(:ignore t :which-key "lsp")
+      "lr" '(lsp-rename :which-key "rename")))
   :hook
   (c++-mode . lsp)
   (c-mode . lsp)
