@@ -194,6 +194,7 @@
 	"r" '(:ignore t :which-key "frame")
 	"rr" '(make-frame :which-key "new")
 	"rf" '(find-file-other-frame :which-key "find file")
+	"rq" '(delete-frame :which-key "delete")
 
 	"w" '(:ignore t :which-key "window")
 	"wq" '(delete-window :which-key "delete")
