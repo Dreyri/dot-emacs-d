@@ -437,7 +437,7 @@
 							  ".cquery_cached_index"))
   (add-to-list 'projectile-globally-ignored-file-suffixes '(".o"
 							    ".so"))
-  :config
+  :init
   (with-eval-after-load 'general
     (my-leader-def
       "p" '(:ignore t :which-key "projectile")
