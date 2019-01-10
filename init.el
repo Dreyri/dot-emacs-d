@@ -191,6 +191,10 @@
 	"fer" '(my-init-load :which-key "reload")
 	"fec" '(my-init-edit :which-key "edit")
 
+	"r" '(:ignore t :which-key "frame")
+	"rr" '(make-frame :which-key "new")
+	"rf" '(find-file-other-frame :which-key "find file")
+
 	"w" '(:ignore t :which-key "window")
 	"wq" '(delete-window :which-key "delete")
 	"wd" '(kill-buffer-and-window :which-key "delete buffer and window")
