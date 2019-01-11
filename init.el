@@ -528,7 +528,7 @@
 
 (use-package flycheck
   :config
-  (global-flycheck-mode)
+  ;(global-flycheck-mode)
   (with-eval-after-load 'general
     (my-leader-def
       "c" '(:ignore t :which-key "flycheck")
