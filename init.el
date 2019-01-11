@@ -578,6 +578,18 @@
 
 (use-package meson-mode)
 
+(use-package csharp-mode
+  :mode ("\\.cs$" . csharp-mode)
+  :hook
+  (csharp-mode . flycheck-mode))
+
+(use-package omnisharp
+  :hook
+  (csharp-mode . omnisharp-mode)
+  :config
+  (with-eval-after-load 'company
+    (add-to-list 'company-backends 'company-omnisharp)))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -586,6 +598,5 @@
  '(electric-pair-mode t)
  '(global-flycheck-mode t)
  '(package-selected-packages
-   (quote
-    (dap-mode meson-mode org-journal ivy-youtube http evil-collection request-deferred deferred toml restclient json-rpc jsonrpc company-quickhelp-mode evil-smartparens ace-jump-buffer flycheck-popup-tip moe-theme ace-jump ace-jump-mode org-bullets golden-ratio projectile-ripgrep ripgrep lua-mode org-evil cargo magit-gh-pulls magit-gitflow git-timemachine evil-surround lispyville lispy evil-paredit evil-magit powerline evil-escape all-the-icons-ivy all-the-icons company-box geiser general cmake-mode gitconfig-mode nix-sandbox lsp-clangd ivy-xref paredit nix-buffer flycheck nix-mode nix-update yaml-mode yasnippet ccls company-lsp company projectile ace-window ivy-rich counsel ivy gitignore-mode magit clang-format org-plus-contrib hydra evil which-key delight use-package))))
+   '(omnisharp csharp-mode dap-mode meson-mode org-journal ivy-youtube http evil-collection request-deferred deferred toml restclient json-rpc jsonrpc company-quickhelp-mode evil-smartparens ace-jump-buffer flycheck-popup-tip moe-theme ace-jump ace-jump-mode org-bullets golden-ratio projectile-ripgrep ripgrep lua-mode org-evil cargo magit-gh-pulls magit-gitflow git-timemachine evil-surround lispyville lispy evil-paredit evil-magit powerline evil-escape all-the-icons-ivy all-the-icons company-box geiser general cmake-mode gitconfig-mode nix-sandbox lsp-clangd ivy-xref paredit nix-buffer flycheck nix-mode nix-update yaml-mode yasnippet ccls company-lsp company projectile ace-window ivy-rich counsel ivy gitignore-mode magit clang-format org-plus-contrib hydra evil which-key delight use-package)))
 
