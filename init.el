@@ -533,7 +533,8 @@
     (my-leader-def
       "c" '(:ignore t :which-key "flycheck")
       "cj" '(flycheck-next-error :which-key "next error")
-      "ck" '(flycheck-previous-error :which-key "prev error"))))
+      "ck" '(flycheck-previous-error :which-key "prev error")
+      "cl" '(flycheck-list-errors :which-key "list errors"))))
 
 (use-package flycheck-popup-tip
   :hook
