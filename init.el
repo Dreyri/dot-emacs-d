@@ -274,7 +274,7 @@
   (with-eval-after-load 'general
     (my-leader-def
       "o j" '(:ignore t :which-key "journal")
-      "o j n" '(my-journal-new-entry :which-key "today")
+      "o j n" '(org-journal-new-entry :which-key "today")
       "o j y" '(my-journal-yesterday :which-key "yesterday")))
   :init
   (setq org-journal-dir "~/org/journal/"
