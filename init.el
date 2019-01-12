@@ -507,13 +507,31 @@
       "l" '(:ignore t :which-key "lsp")
       "lr" '(lsp-rename :which-key "rename")))
   :hook
-  (c++-mode . lsp)
-  (c-mode . lsp)
   (rust-mode . lsp))
 
 (use-package lsp-ui
   :hook
-  (lsp-mode . lsp-ui-mode))
+  (lsp-mode . lsp-ui-mode)
+  :config
+  (require 'lsp-ui-flycheck)
+  (with-eval-after-load 'general
+    (my-leader-def
+      "lu" '(:ignore t :which-key "lsp-ui")))
+  :hook
+  (lsp-after-open . (lambda () (lsp-ui-flycheck-enable 1))))
+
+(use-package ccls
+  :defer t
+  :init
+  (with-eval-after-load 'projectile
+    (add-to-list 'projectile-globally-ignored-directories ".ccls-cache/"))
+  (defun lsp-ccls ()
+    ;(require 'lsp-mode)
+    ;(require 'ccls)
+    (lsp))
+  :hook
+  (c-mode . (lsp-ccls))
+  (c++-mode . (lsp-ccls)))
 
 (use-package dap-mode
   :disabled t)
