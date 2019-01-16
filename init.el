@@ -500,6 +500,8 @@
 
 (use-package lsp-mode
   :commands lsp
+  :init
+  (setq lsp-prefer-flymake nil)
   :config
   (require 'lsp-clients)
   (with-eval-after-load 'general
