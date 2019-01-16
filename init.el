@@ -507,20 +507,23 @@
   (with-eval-after-load 'general
     (my-leader-def
       "l" '(:ignore t :which-key "lsp")
-      "lr" '(lsp-rename :which-key "rename")))
+      "lr" '(lsp-rename :which-key "rename")
+      "lf" '(:ignore t :which-key "find")
+      "lfd" '(lsp-find-definition :which-key "definition")
+      "lfD" '(lsp-find-declaration :which-key "declaration")))
   :hook
   (rust-mode . lsp))
 
 (use-package lsp-ui
   :hook
   (lsp-mode . lsp-ui-mode)
+  (lsp-ui-mode . (lambda () (flycheck-popup-tip-mode -1)))
+  :init
+  (setq lsp-ui-flycheck-enable t)
   :config
-  (require 'lsp-ui-flycheck)
   (with-eval-after-load 'general
     (my-leader-def
-      "lu" '(:ignore t :which-key "lsp-ui")))
-  :hook
-  (lsp-after-open . (lambda () (lsp-ui-flycheck-enable 1))))
+      "lu" '(:ignore t :which-key "lsp-ui"))))
 
 (use-package ccls
   :defer t
