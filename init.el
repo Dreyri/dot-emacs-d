@@ -270,12 +270,12 @@
   :after org
   :bind (("C-c o j n" . org-journal-new-entry)
 	 ("C-c o j y" . my-journal-yesterday))
-  :config
+  :init
   (with-eval-after-load 'general
     (my-leader-def
-      "o j" '(:ignore t :which-key "journal")
-      "o j n" '(org-journal-new-entry :which-key "today")
-      "o j y" '(my-journal-yesterday :which-key "yesterday")))
+      "oj" '(:ignore t :which-key "journal")
+      "ojn" '(org-journal-new-entry :which-key "today")
+      "ojy" '(my-journal-yesterday :which-key "yesterday")))
   :init
   (setq org-journal-dir "~/org/journal/"
 	org-journal-file-format "%Y%m%d")
