@@ -300,7 +300,7 @@
 (use-package clang-format
   :bind
   (:map c-mode-base-map
-	("C-c C-f" . clang-format)))
+	("C-c C-f" . clang-format-buffer)))
 
 (use-package modern-cpp-font-lock
   :hook
