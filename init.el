@@ -526,10 +526,11 @@
       "lu" '(:ignore t :which-key "lsp-ui"))))
 
 (use-package ccls
+  :disabled t
   :defer t
   :init
   (with-eval-after-load 'projectile
-    (add-to-list 'projectile-globally-ignored-directories ".ccls-cache/"))
+    (add-to-list 'projectile-globally-ignored-directories ".ccls-cache"))
   (defun lsp-ccls ()
     ;(require 'lsp-mode)
     ;(require 'ccls)
@@ -537,6 +538,19 @@
   :hook
   (c-mode . (lsp-ccls))
   (c++-mode . (lsp-ccls)))
+
+(use-package cquery
+  :init
+  (setq cquery-executable "cquery")
+  (with-eval-after-load 'projectile
+    (add-to-list 'projectile-globally-ignored-directories ".cquery-cache")
+    (setq projectile-project-root-files-top-down-recurring
+	  (append '("compile_commands.json"
+		    ".cquery")
+		  projectile-project-root-files-top-down-recurring)))
+  :hook
+  (c-mode . lsp-cquery-enable)
+  (c++-mode . lsp-cquery-enable))
 
 (use-package dap-mode
   :disabled t)
@@ -623,5 +637,6 @@
  '(electric-pair-mode t)
  '(global-flycheck-mode t)
  '(package-selected-packages
-   '(neotree csharp-mode dap-mode meson-mode org-journal ivy-youtube http evil-collection request-deferred deferred toml restclient json-rpc jsonrpc company-quickhelp-mode evil-smartparens ace-jump-buffer flycheck-popup-tip moe-theme ace-jump ace-jump-mode org-bullets golden-ratio projectile-ripgrep ripgrep lua-mode org-evil cargo magit-gh-pulls magit-gitflow git-timemachine evil-surround lispyville lispy evil-paredit evil-magit powerline evil-escape all-the-icons-ivy all-the-icons company-box geiser general cmake-mode gitconfig-mode nix-sandbox lsp-clangd ivy-xref paredit nix-buffer flycheck nix-mode nix-update yaml-mode yasnippet ccls company-lsp company projectile ace-window ivy-rich counsel ivy gitignore-mode magit clang-format org-plus-contrib hydra evil which-key delight use-package)))
+   (quote
+    (cquery neotree csharp-mode dap-mode meson-mode org-journal ivy-youtube http evil-collection request-deferred deferred toml restclient json-rpc jsonrpc company-quickhelp-mode evil-smartparens ace-jump-buffer flycheck-popup-tip moe-theme ace-jump ace-jump-mode org-bullets golden-ratio projectile-ripgrep ripgrep lua-mode org-evil cargo magit-gh-pulls magit-gitflow git-timemachine evil-surround lispyville lispy evil-paredit evil-magit powerline evil-escape all-the-icons-ivy all-the-icons company-box geiser general cmake-mode gitconfig-mode nix-sandbox lsp-clangd ivy-xref paredit nix-buffer flycheck nix-mode nix-update yaml-mode yasnippet ccls company-lsp company projectile ace-window ivy-rich counsel ivy gitignore-mode magit clang-format org-plus-contrib hydra evil which-key delight use-package))))
 
