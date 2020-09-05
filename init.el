@@ -50,16 +50,12 @@
  '(line-number-current-line ((t :weight bold))))
 
 (require 'package)
-(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
-			 ("melpa" . "https://melpa.org/packages/")
-			 ("org" . "http://orgmode.org/elpa/")))
+
+;; packages are made available and installed using nix
+(setq package-archives nil)
 
 ;; TODO not sure if this is required
 (package-initialize)
-
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
 
 (require 'use-package)
 (setq use-package-always-ensure t)
