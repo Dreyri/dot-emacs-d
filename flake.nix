@@ -86,7 +86,7 @@
       };
 
       defaultPackage = 
-        let pkgsForSystem = system: import emacs { inherit system; overlays = [ self.overlay emacs.overlay ]; };
+        let pkgsForSystem = system: import nixpkgs { inherit system; overlays = [ self.overlay emacs.overlay ]; };
       in
         forAllSystems (system: ((pkgsForSystem system).emacs-dreyri (pkgsForSystem system).emacs)); 
 
