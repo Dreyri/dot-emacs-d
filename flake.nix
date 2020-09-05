@@ -3,14 +3,13 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/master";
+    emacs.url = "github:nix-community/emacs-overlay/master";
   };
 
-  outputs = inputs:
+  outputs = { self, nixpkgs, emacs }:
     let
       allSystems = [ "x86_64-linux" "i686-linux" "aarch64-linux" ];
-      forAllSystems = f: nixpkgs.lib.genAttrs supportedSystems (system: f system);
-      version = "${nixpkgs.lib.substring 0 8 self.lastModifiedDate}.${self.shortRev or "dirty"}";
-      emacsPackages = let epkgs = inputs.nixpkgs.legacyPackages.emacsPackagesFor 
+      forAllSystems = f: nixpkgs.lib.genAttrs allSystems (system: f system);
       extraPackages = epkgs: (with epkgs.elpaPackages; [
         delight
       ]) ++ (with epkgs.orgPackages; [
@@ -80,17 +79,17 @@
 	meson-mode
       ]);
 
-      emacsPackages = emacs: final.emacsPackagesFor emacs;
-      emacsWithPackages = emacs: (emacsPackages emacs).emacsWithPackages;
-    in {
+      emacsPackages = emacs: final: final.emacsPackagesFor emacs;
+      emacsWithPackages = emacs: final: (emacsPackages emacs final).emacsWithPackages;
+    in rec {
       overlay = final: prev: {
-        emacs-dreyri = emacs: emacsWithPackages extraPackages;
+        emacs-dreyri = emacs: (emacsWithPackages emacs final) extraPackages;
       };
 
-      defaultPackage = forAllSystems (system: (import nixpkgs {
-        inherit system;
-	overlays = [ self.overlay ];
-      }).emacs-dreyri);
-    };
+      defaultPackage = 
+        let pkgsForSystem = system: import emacs { inherit system; overlays = [ self.overlay emacs.overlay ]; };
+      in
+        forAllSystems (system: ((pkgsForSystem system).emacs-dreyri (pkgsForSystem system).emacs)); 
 
+    };
 }
