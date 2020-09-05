@@ -3,10 +3,9 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/master";
-    emacs.url = "github:nix-community/emacs-overlay/master";
   };
 
-  outputs = { self, nixpkgs, emacs }:
+  outputs = { self, nixpkgs }:
     let
       allSystems = [ "x86_64-linux" "i686-linux" "aarch64-linux" ];
       forAllSystems = f: nixpkgs.lib.genAttrs allSystems (system: f system);
