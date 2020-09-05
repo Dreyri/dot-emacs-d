@@ -14,3 +14,5 @@ forge-database.sqlite
 elisp/
 request/
 bookmarks
+.direnv/
+.vscode/
